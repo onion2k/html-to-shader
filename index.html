@@ -1,0 +1,35 @@
+<script id="fs" type="notjs">
+  precision mediump float;
+
+  uniform float u_time;
+  uniform vec2 u_resolution;
+  uniform sampler2D u_texture;
+
+  void main(void)
+  {
+      vec2 uv = gl_FragCoord.xy / u_resolution;
+           uv = uv + vec2(0.5 - sin(dot(uv.x, uv.y) * 13.0), 0.0) * (sin(u_time * 0.5) * 0.25);
+      gl_FragColor = texture2D(u_texture, uv);
+  }
+</script>
+
+<script id="vs" type="notjs">
+  attribute vec4 position;
+  void main() {
+    gl_Position = position;
+  }
+</script>
+
+<svg id="svg">
+  <foreignObject x="0" y="0" width="1024" height="1024">
+    <p>This is some HTML content.</p>
+    <h1>This is some HTML content.</h1>
+    <h2>This is some HTML content.</h2>
+    <h3>This is some HTML content.</h3>
+    <h4>This is some HTML content.</h4>
+    <h5>This is some HTML content.</h5>
+    <h6>This is some HTML content.</h6>
+  </foreignObject>
+</svg>
+
+<canvas id="c" />
